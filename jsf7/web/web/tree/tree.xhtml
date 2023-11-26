@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Arbre des Services et Employés</title>
+    <style>
+        .tree-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 100% de la hauteur de la vue */
+        }
+
+        .custom-tree-node-service .ui-treenode-label {
+            background-color: #FFD700; /* Couleur de fond pour les nœuds de service */
+            font-weight: bold; /* Texte en gras pour les nœuds de service */
+        }
+
+        .custom-tree-node-employee .ui-treenode-label {
+            background-color: #98FB98; /* Couleur de fond pour les nœuds d'employé */
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form>
+        
+        <div class="tree-container">
+            <p:tree value="#{serviceBean.root}" var="node" dynamic="true" cache="false">
+                <p:treeNode type="service" styleClass="custom-tree-node-service">
+                    <h:outputText value="#{node.nom}" /> <!-- Remplacez 'nom' par le champ approprié de Services -->
+                </p:treeNode>
+                <p:treeNode type="employee" styleClass="custom-tree-node-employee">
+                    <h:outputText value="#{node.nom}" /> <!-- Remplacez 'nom' par le champ approprié de Employe -->
+                </p:treeNode>
+            </p:tree>
+        </div>
+    </h:form>
+</h:body>
+</html>
